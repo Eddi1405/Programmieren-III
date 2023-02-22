@@ -1,14 +1,16 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.thymeleaf.org ">
 
 <head>
     <title>Start</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 
 <body>
-<p>index</p>
-<form action="http://localhost:8080/login">
+<div th:insert="fragments/topnavbar :: navbar">  </div>
+
+<form action="http://localhost:8080">
     <input type="submit" value="Login">
 </form>
 </body>
