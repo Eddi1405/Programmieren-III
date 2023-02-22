@@ -20,4 +20,10 @@ public class SampleController {
     public String getLoginPage(Model model) {
         return "login";
     }
+
+    @GetMapping("/register")
+    public String onOpenUrl() {
+        log.info("entering onOpenUrl (GET-Method /register)");
+        return "register";
+    }
 }
