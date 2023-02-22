@@ -2,7 +2,7 @@
        xsi:schemaLocation="http://www.thymeleaf.org ">
 
 <head>
-    <title>Start</title>
+    <title>ImageShare</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
@@ -11,7 +11,14 @@
 <div th:insert="fragments/topnavbar :: navbar">  </div>
 
 <form action="http://localhost:8080">
-    <input type="submit" value="Login">
+    <input type="file" value="Datei">
+    <br>
+    <select id="min" name="Zeit">
+        <option value="1min">1min</option>
+        <option value="5min">5min</option>
+        <option value="10min">10min</option>
+        <option value="Nie">Nie</option>
+    <input type="submit" value="Hochladen">
 </form>
 </body>
 

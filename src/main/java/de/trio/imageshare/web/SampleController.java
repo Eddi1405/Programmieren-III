@@ -17,7 +17,7 @@ public class SampleController {
     }
 
     @GetMapping(value = "/login")
-    public String getLoginPage(Model model) {
+    public String getLoginPage() {
         return "login";
     }
 
@@ -26,4 +26,9 @@ public class SampleController {
         log.info("entering onOpenUrl (GET-Method /register)");
         return "register";
     }
+    @GetMapping("/main")
+    public String getMainPage() {
+        return "main";
+    }
+
 }
