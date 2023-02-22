@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.trio</groupId>
-	<artifactId>Programmieren III (ImageShare)</artifactId>
+	<artifactId>imageshare</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ImageShare</name>
 	<description>Demo project focused on Thymeleaf Markup</description>
