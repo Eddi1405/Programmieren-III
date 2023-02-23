@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>de.trio</groupId>
 	<artifactId>imageshare</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>ImageShare</name>
 	<description>Demo project focused on Thymeleaf Markup</description>
 	<properties>
