@@ -1,6 +1,5 @@
 package de.trio.imageshare.web;
 
-import de.trio.imageshare.web.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +25,4 @@ public class SampleController {
         log.info("entering onOpenUrl (GET-Method /register)");
         return "register";
     }
-    @GetMapping("/main")
-    public String getMainPage() {
-        return "main";
-    }
-
 }

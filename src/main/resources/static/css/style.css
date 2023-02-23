@@ -4,12 +4,12 @@ body {
   background-color: white;
   background-position: center;
   color: #000000;
-  text-shadow: 1px 1px 2px black;
+  /*text-shadow: 1px 1px 2px black;*/
 }
 
 .topnav {
   overflow: hidden;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(121, 121, 121);
   user-select: none;
 }
 
@@ -22,12 +22,12 @@ body {
   font-size: 16px;
 }
 .topnav a:hover {
-  background-color: rgba(132, 133, 134, 0.76);
+  background-color: rgba(164, 164, 164, 0.76);
   color: #000000;
 }
 
 .topnav a.active {
-  background-color: #bfc0c0;
+  background-color: #98b7b7;
   color: #000000;
 }
 
@@ -35,9 +35,7 @@ input{
   align-content: center;
   border: none;
   color: rgb(0, 0, 0);
-  padding: 6px 14px;
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
   border-style: solid;
   border-radius: 5px;
@@ -46,14 +44,14 @@ input{
 }
 
 input[type = text]{
-
+  padding: 6px 14px;
   background-color: #ffffff ;
 
 }
 
 input[type = submit]{
-
-  background-color: #0093ce ;
+  padding: 6px 14px;
+  background-color: #e9e9ed;
 
 }
 
@@ -128,6 +126,14 @@ select{
   border-width: 2px;
   resize: vertical;
 
+}
+input::file-selector-button{
+  border-color: #000000;
+  border-width: 0px;
+  border-style: solid;
+  padding: 6px 10px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 
