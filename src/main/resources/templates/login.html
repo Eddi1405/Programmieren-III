@@ -10,34 +10,27 @@
 <body>
 <div th:insert="~{fragments/topnavbar :: navbar}">  </div>
 
-
-<h1>ImageDB</h1>
-
 <span th:if="${loginerror != null}">
         <div th:text="${loginerror}" class="alert alert-primary" role="alert">ERROR_MSG</div>
     </span>
 
-<form class="form" method="POST" action="/login">
+<form class="form middle" method="POST" action="/login">
+    <br>
+    <br>
+    <h3>Login</h3>
     <div class="form-group">
-        <label for="uname">Benutzername:</label>
-        <input class="form-control" type="text" id="uname" name="username" aria-describedby="userHelpBlock">
-        <div id="userHelpBlock" class="form-text">
-            Benutzen Sie ihren Benutzernamen oder ihre E-Mail
-        </div>
+        <input class="form-control" type="text" id="uname" name="username" aria-describedby="userHelpBlock" placeholder="Benutzernamen oder E-Mail">
     </div>
     <div class="form-group">
-        <label for="passwd">Passwort:</label>
-        <input class="form-control" type="password" id="passwd" name="password" aria-describedby="pwdHelpBlock">
-        <div id="pwdHelpBlock" class="form-text">
-            Ihr Passwort muss 6-20 Zeichen umfassen.
-        </div>
+        <input class="form-control" type="password" id="passwd" name="password" aria-describedby="pwdHelpBlock" placeholder="Passwort">
     </div>
     <input type="submit" class="btn btn-success" value="Anmelden">
 </form>
 
-
-<h3>Noch kein Benutzer?</h3>
-<a href="/register">Hier neu registrieren</a>
+<div class="middle">
+    <h3>Noch kein Benutzer?</h3>
+    <a href="/register">Hier neu registrieren</a>
+</div>>
 </body>
 
 </html>

@@ -10,10 +10,10 @@
 <body>
 <div th:insert="~{fragments/topnavbar :: navbar}">  </div>
 
-<form class="middle" action="http://localhost:8080">
+<form class="middle" action="#" th:action="@{/index}" method="post">
     <br>
     <br>
-    <h3>Wählen Sie eine Datei aus.</h3>
+    <h3>Wählen Sie eine Bild aus.</h3>
     <input type="file" value="Datei">
     <br>
     <br>
@@ -36,7 +36,7 @@
         <option value="Nie">Nie</option>
     </select>
     <br>
-    <input class="middle" type="submit" value="Hochladen">
+    <input type="submit" value="Hochladen">
 </form>
 </body>
 

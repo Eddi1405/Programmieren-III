@@ -46,13 +46,23 @@ input{
 input[type = text]{
   padding: 6px 14px;
   background-color: #ffffff ;
-
+  margin-bottom: 2px;
 }
 
 input[type = submit]{
   padding: 6px 14px;
   background-color: #e9e9ed;
+  margin-bottom: 2px;
+}
 
+input[type = password]{
+  padding: 6px 14px;
+  background-color: white;
+  margin-bottom: 2px;
+}
+
+select{
+  background-color: white;
 }
 
 input:focus{
