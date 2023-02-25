@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ImageShare</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:insert="~{fragments/topnavbar :: navbar}">  </div>
+
+<form class="middle" action="#" th:action="@{/register}" method="post">
+    <br>
+    <br>
+    <h3>Registrieren</h3>
+    <input type="text" placeholder="Name" id="name">
+    <br>
+    <input type="text" placeholder="Email" id="email">
+    <br>
+    <input type="password" placeholder="Passwort" id="pw1">
+    <br>
+    <input type="password" placeholder="Passwort" id="pw2">
+    <br>
+    <input type="submit" value="Registrieren">
+</form>
+
+</body>
+</html>

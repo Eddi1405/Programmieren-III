@@ -1,8 +1,6 @@
 package de.trio.imageshare.web;
 
-import de.trio.imageshare.web.entities.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
@@ -11,8 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class SampleController {
 
-    @GetMapping(value = "/index")    public String getIndexPage(Model model) {
-        log.debug("entering getIndexPage");
+    @GetMapping(value = "/index")
+    public String getIndexPage() {
         return "index";
     }
 
@@ -22,13 +20,7 @@ public class SampleController {
     }
 
     @GetMapping("/register")
-    public String onOpenUrl() {
-        log.info("entering onOpenUrl (GET-Method /register)");
+    public String getRegisterPage() {
         return "register";
     }
-    @GetMapping("/main")
-    public String getMainPage() {
-        return "main";
-    }
-
 }
