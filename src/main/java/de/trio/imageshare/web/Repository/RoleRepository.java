@@ -1,9 +1,11 @@
 package de.trio.imageshare.web.Repository;
 
-import de.trio.imageshare.web.entities.Role;
+import de.trio.imageshare.web.entities.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleRepository extends JpaRepository<Role, Long> {
+import java.util.Optional;
 
-    Role findByName(String name);
+public interface RoleRepository extends JpaRepository<Roles, Integer> {
+
+    Optional<Roles> findByName(String name);
 }
