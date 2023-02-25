@@ -23,4 +23,10 @@ public class SampleController {
     public String getRegisterPage() {
         return "register";
     }
+
+    // handler method to handle home page request
+    @GetMapping("/index")
+    public String home(){
+        return "index";
+    }
 }
