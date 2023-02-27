@@ -11,10 +11,11 @@ CREATE TABLE IF NOT EXISTS Role(
     users varchar(50) NOT NULL
 );
 
-CREATE TABLE Data(
-    Bild varchar(50) NOT NULL,
-    Title varchar(50),
-    Beschreibung varchar(50),
-    Kategorie varchar(20),
-    Zeit int NOT NULL
+CREATE TABLE data(
+    id int NOT NULL AUTO_INCREMENT,
+    bildpfad varchar(50) NOT NULL,
+    title varchar(50),
+    beschreibung varchar(250),
+    kategorie varchar(20),
+    zeit int
     ) ;
