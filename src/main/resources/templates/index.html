@@ -9,7 +9,7 @@
 <body>
 <div th:insert="~{fragments/topnavbar :: navbar}">  </div>
 
-<form class="middle" action="/index" method="post">
+<form class="middle" action="/index" method="post" enctype="multipart/form-data">
     <br>
     <br>
     <h3>Wählen Sie eine Bild aus.</h3>
@@ -21,14 +21,14 @@
     <textarea placeholder="Beschreibung" id="beschreibung" name="beschreibung" maxlength="250"></textarea>
     <br>
     <select id="kategorie" name="kategorie">
-        <option disabled value="null">Wähle eine Kategorie aus.</option>
+        <option disabled selected="selected" value="null">Wähle eine Kategorie aus.</option>
         <option value="tier">Tier</option>
         <option value="kunst">Kunst</option>
         <option value="abstrakt">Abstrakt</option>
         <option value="auto">Auto</option>
     </select>
     <select id="zeit" name="zeit">
-        <option disabled value="0">Wähle eine Zeit aus.</option>
+        <option disabled selected="selected" value="0">Wähle eine Zeit aus.</option>
         <option value="1">1min</option>
         <option value="5">5min</option>
         <option value="10">10min</option>

@@ -155,4 +155,9 @@ h3{
   float: right !important;
 }
 
+img{
+  max-width: 40%;
+  height: auto;
+}
+
 

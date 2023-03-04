@@ -10,7 +10,6 @@ public class Data {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private Long id;
-    @NotBlank(message = "Bild wird benötigt")
     @Column(name ="bildpfad")
     private String bildpfad;
     @Column(name ="title")

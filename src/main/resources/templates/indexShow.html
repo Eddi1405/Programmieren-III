@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+  <title>ImageShare</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+  <script>
+    var url = window.location.search;
+    var query = url.substring(1);
+  </script>
+</head>
+
+<body>
+<div th:insert="~{fragments/topnavbar :: navbar}">  </div>
+<div class="middle">
+<img id="img" src="">
+</div>
+<script>
+  var imageSrc = "upload/images/" + query;
+  document.getElementById("img").setAttribute("src", imageSrc);
+</script>
+
+</div>
+</body>
+</html>

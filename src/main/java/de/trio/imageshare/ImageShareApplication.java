@@ -1,16 +1,14 @@
 package de.trio.imageshare;
 
+import de.trio.imageshare.web.config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Import;
 
-@Slf4j
 @SpringBootApplication
+@Import(config.class)
 public class ImageShareApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ImageShareApplication.class, args);
-        log.info("Execution Beginn");
-
-    }
+        SpringApplication.run(ImageShareApplication.class, args);}
 
     }
