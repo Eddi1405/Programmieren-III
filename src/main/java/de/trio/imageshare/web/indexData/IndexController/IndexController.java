@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -31,22 +28,22 @@ public class IndexController {
     Path pfad;
     int nr = 0;
     String randomname;
+    private RandomString rs = new RandomString();
     @PostMapping("/index")
     public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam Integer zeit ,Model model )throws IOException {
         Data data = new Data();
-        nr += 1;
-        randomname = "test" + nr;;
+        randomname = rs.RandomString(6);
         is.saveImage(randomname, bild, title, beschreibung, kategorie, zeit);
         Data dataList = is.getImageByName(randomname, dataRepository);
         model.addAttribute("dataList", dataList);
-        return "indexShow";
+        return "redirect:/" + randomname;
     }
 
-    @GetMapping(value = "/indexShow")
-    public String getIndexShowPage(Model model) {
-        List<Data> dataList = is.findAll();
+    @GetMapping  (value = "/{randomname}")
+    public String getIndexShowPage(Model model, @PathVariable("randomname") String name) {
+        Data dataList = is.getImageByName(randomname, dataRepository);
         model.addAttribute("dataList", dataList);
-        return "redirect:/indexShow?" + randomname;
+        return "indexShow";
     }
 
     @GetMapping("indexShow/{name}")
