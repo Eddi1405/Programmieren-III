@@ -22,6 +22,7 @@ public class IndexService {
     public void saveImage(String name, MultipartFile file, String title, String beschreibung, String kategorie, int zeit) throws IOException {
         Data data = new Data();
         data.setBildname(name);
+        data.setBildpfad("/indexShow/" + name);
         data.setBild(file.getBytes());
         data.setTitle(title);
         data.setBeschreibung(beschreibung);

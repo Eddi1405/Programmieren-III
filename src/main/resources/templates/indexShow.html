@@ -4,22 +4,18 @@
   <title>ImageShare</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link th:href="@{/css/style.css}" rel="stylesheet" />
-  <script>
-    var url = window.location.search;
-    var query = url.substring(1);
-  </script>
 </head>
 
 <body>
 <div th:insert="~{fragments/topnavbar :: navbar}">  </div>
-<div class="middle">
-<img id="img" src="">
+<div th:each="data : ${dataList}" class="middle">
+<img id="" th:src="@{${data.bildpfad}}">
 </div>
-<script>
-  var imageSrc = "indexShow/" + query;
-  document.getElementById("img").setAttribute("src", imageSrc);
-</script>
-
+<div th:each="data : ${dataList}" class="middle">
+  <h3 th:text="${data.title}"></h3>
+  <p th:text="${data.beschreibung}"></p>
+  <label th:text="${data.kategorie}"></label>
+</div>
 </div>
 </body>
 </html>

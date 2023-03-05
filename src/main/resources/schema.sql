@@ -15,6 +15,7 @@ CREATE TABLE data(
     id int NOT NULL AUTO_INCREMENT,
     bild BLOB,
     bildname varchar(50) NOT NULL,
+    bildpfad varchar(50) NOT NULL,
     title varchar(50),
     beschreibung varchar(250),
     kategorie varchar(20),

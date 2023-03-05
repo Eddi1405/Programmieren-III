@@ -12,6 +12,8 @@ public class Data{
     private int id;
     @Column(name ="bildname")
     private String bildname;
+    @Column(name ="bildpfad")
+    private String bildpfad;
     @Column(name ="title")
     private String title;
     @Column(name ="beschreibung")
@@ -23,6 +25,14 @@ public class Data{
     @Lob
     @Column(name ="bild")
     private byte[] bild;
+
+    public String getBildpfad() {
+        return bildpfad;
+    }
+
+    public void setBildpfad(String bildpfad) {
+        this.bildpfad = bildpfad;
+    }
 
     public byte[] getBild() {
         return bild;

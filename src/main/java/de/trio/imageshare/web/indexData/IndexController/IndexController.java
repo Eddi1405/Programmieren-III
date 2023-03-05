@@ -1,5 +1,6 @@
 package de.trio.imageshare.web.indexData.IndexController;
 
+import org.springframework.ui.Model;
 import de.trio.imageshare.web.indexData.IndexModel.Data;
 import de.trio.imageshare.web.indexData.IndexModel.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.AttributedString;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -27,20 +30,24 @@ public class IndexController {
     private IndexService is;
     Path pfad;
     int nr = 0;
+    String randomname;
     @PostMapping("/index")
-    public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam Integer zeit)throws IOException {
+    public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam Integer zeit ,Model model )throws IOException {
         Data data = new Data();
         nr += 1;
-        String randomname = "test" + nr;;
-        if (!bild.isEmpty()) {
-            byte[] bildpfadBytes = bild.getBytes();
-            pfad = Paths.get("src/main/resources/bilder/" + bild.getOriginalFilename());
-        }
+        randomname = "test" + nr;;
         is.saveImage(randomname, bild, title, beschreibung, kategorie, zeit);
-
-        return "redirect:/indexShow?" + randomname;
+        Data dataList = is.getImageByName(randomname, dataRepository);
+        model.addAttribute("dataList", dataList);
+        return "indexShow";
     }
 
+    @GetMapping(value = "/indexShow")
+    public String getIndexShowPage(Model model) {
+        List<Data> dataList = is.findAll();
+        model.addAttribute("dataList", dataList);
+        return "redirect:/indexShow?" + randomname;
+    }
 
     @GetMapping("indexShow/{name}")
     public ResponseEntity<byte[]> getName(@PathVariable("name") String name) {
@@ -51,10 +58,6 @@ public class IndexController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
-
-    public void showPicture(@PathVariable("id") int id){
-
     }
 
 
