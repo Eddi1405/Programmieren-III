@@ -72,7 +72,7 @@ esac
 
 if [ -z "$JAVA_HOME" ] ; then
   if [ -r /etc/gentoo-release ] ; then
-    JAVA_HOME=`java-de.trio.imageshare.web.config --jre-home`
+    JAVA_HOME=`java-de.trio.imageshare.web.de.trio.imageshare.config --jre-home`
   fi
 fi
 

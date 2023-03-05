@@ -5,13 +5,13 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "data")
-public class Data {
+public class Data{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Long id;
-    @Column(name ="bildpfad")
-    private String bildpfad;
+    private int id;
+    @Column(name ="bildname")
+    private String bildname;
     @Column(name ="title")
     private String title;
     @Column(name ="beschreibung")
@@ -20,7 +20,17 @@ public class Data {
     private String kategorie;
     @Column(name ="zeit")
     private Integer zeit;
+    @Lob
+    @Column(name ="bild")
+    private byte[] bild;
 
+    public byte[] getBild() {
+        return bild;
+    }
+
+    public void setBild(byte[] bild) {
+        this.bild = bild;
+    }
 
     public String getTitle() {
         return title;
@@ -30,12 +40,12 @@ public class Data {
         this.title = title;
     }
 
-    public String getBildpfad() {
-        return bildpfad;
+    public String getBildname() {
+        return bildname;
     }
 
-    public void setBildpfad(String bildpfad) {
-        this.bildpfad = bildpfad;
+    public void setBildname(String bildname) {
+        this.bildname = bildname;
     }
 
     public String getBeschreibung() {
@@ -62,11 +72,11 @@ public class Data {
         this.zeit = zeit;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 }
