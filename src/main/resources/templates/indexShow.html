@@ -12,9 +12,12 @@
 <img id="" th:src="@{${data.bildpfad}}">
 </div>
 <div th:each="data : ${dataList}" class="middle">
+  <div class="box">
   <h3 th:text="${data.title}"></h3>
   <p th:text="${data.beschreibung}"></p>
-  <label th:text="${data.kategorie}"></label>
+  <p class="box2" th:text="${data.kategorie}"></p>
+    <h3></h3>
+    </div>
 </div>
 </div>
 </body>

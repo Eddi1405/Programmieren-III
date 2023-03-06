@@ -23,7 +23,9 @@ public class IndexController {
     private RandomString rs = new RandomString();
     @PostMapping("/index")
     public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam Integer zeit ,Model model )throws IOException {
-        randomname = rs.RandomString(6);
+        do{
+            randomname = rs.RandomString(6);
+        }while (dataRepository.existsBybildname(randomname));
         is.saveImage(randomname, bild, title, beschreibung, kategorie, zeit);
         return "redirect:/" + randomname;
     }

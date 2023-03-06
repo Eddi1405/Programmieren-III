@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface DataRepository extends JpaRepository<Data, Integer> {
     Optional<Data> findBybildname(String bildname);
+    public boolean existsBybildname(String bildname);
 }
