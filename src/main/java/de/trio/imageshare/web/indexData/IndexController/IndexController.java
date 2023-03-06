@@ -22,12 +22,28 @@ public class IndexController {
     String randomname;
     private RandomString rs = new RandomString();
     @PostMapping("/index")
-    public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam Integer zeit ,Model model )throws IOException {
-        do{
-            randomname = rs.RandomString(6);
-        }while (dataRepository.existsBybildname(randomname));
-        is.saveImage(randomname, bild, title, beschreibung, kategorie, zeit);
-        return "redirect:/" + randomname;
+    public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam String urltext, @RequestParam Integer zeit)throws IOException {
+        if(urltext.isEmpty()){
+            do{
+                randomname = rs.RandomString(6);
+            }while (dataRepository.existsBybildname(randomname));
+            is.saveImage(randomname, bild, title, beschreibung, kategorie, zeit);
+            return "redirect:/" + randomname;
+        }else {
+            if(dataRepository.existsBybildname(urltext)){
+                return "index";
+            }else {
+                randomname = urltext;
+                is.saveImage(randomname, bild, title, beschreibung, kategorie, zeit);
+                return "redirect:/" + randomname;
+            }
+
+
+
+        }
+
+
+
     }
 
     @GetMapping  (value = "/{randomname}")
