@@ -36,15 +36,13 @@ public class RegisterController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        if(true){
+        if(!userRepo.existsByUsername(user.getUsername())&& !userRepo.existsByEmail(user.getEmail())){
             userRepo.save(user);
             return "register_success";
 
         }else{
             return "register_error";
         }
-
-
 
     }
 }
