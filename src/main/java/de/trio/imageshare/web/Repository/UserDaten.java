@@ -12,8 +12,6 @@ public class UserDaten {
     @Column
     private String password;
     @Column
-    private String password2;
-    @Column
     private String email;
     @Column
     private String role = "user";
@@ -57,12 +55,5 @@ public class UserDaten {
         this.password = password;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
 }
 

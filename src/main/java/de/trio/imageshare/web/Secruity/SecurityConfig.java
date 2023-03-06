@@ -12,17 +12,18 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable();
-                http.headers().frameOptions().disable()
-                .and()
-                .httpBasic();
+        http.headers().frameOptions().disable();
+        http.csrf().disable();
+        http.authorizeHttpRequests().requestMatchers("/index").authenticated()
+                .anyRequest().permitAll();
+        http.formLogin().loginPage("/login");
         return http.build();
-        
+
     }
 
     @Bean
