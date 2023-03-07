@@ -20,7 +20,7 @@ public class IndexController {
     @Autowired
     private IndexService is;
     String randomname;
-    private RandomString rs = new RandomString();
+    private final RandomString rs = new RandomString();
     @PostMapping("/index")
     public String addData(@RequestParam("bildpfad")MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam String urltext, @RequestParam Integer zeit)throws IOException {
         if(urltext.isEmpty()){
@@ -47,7 +47,7 @@ public class IndexController {
     }
 
     @GetMapping  (value = "/{randomname}")
-    public String getIndexShowPage(Model model, @PathVariable("randomname") String name) {
+    public String getIndexShowPage(Model model) {
         Data dataList = is.getImageByName(randomname, dataRepository);
         model.addAttribute("dataList", dataList);
         return "indexShow";
