@@ -24,5 +24,8 @@ public class SampleController {
         return "register";
     }
 
-
+    @GetMapping(value = "/indexShow")
+    public String getIndexShowPage() {
+        return "indexShow";
+    }
 }
