@@ -19,11 +19,6 @@ public class SampleController {
         return "login";
     }
 
-    @GetMapping("/register")
-    public String getRegisterPage() {
-        return "register";
-    }
-
     @GetMapping(value = "/indexShow")
     public String getIndexShowPage() {
         return "indexShow";
