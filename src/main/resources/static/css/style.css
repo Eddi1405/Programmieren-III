@@ -61,6 +61,12 @@ input[type = password]{
   margin-bottom: 2px;
 }
 
+input[type = email]{
+  padding: 6px 14px;
+  background-color: #ffffff ;
+  margin-bottom: 2px;
+}
+
 select{
   background-color: white;
 }
