@@ -29,12 +29,12 @@ Kubernetes bereitstellen. Sie sind darüber hinaus mit den Grundbegriffen nebenl
 
 **Imageshare**
 **Anforderungen**
-- UC-1: Neuanlage eines Benutzerkontos
-- UC-2: Einloggen und Ausloggen ebenfalls die Möglichkeit die Bilder hochzuladen ohne Account
+- UC-1: Neuanlage eines Benutzerkontos.
+- UC-2: Einloggen und Ausloggen als auch die Möglichkeit die Bilder hochzuladen ohne Account.
 - UC-3: Ablage eines neuen Bildes. Zu dem Bild kann ein Titel und eine Beschreibung hinzugefügt werden.
-- UC-4: Übersichtsdarstellung aller Bilder in einem Dashboard nur wenn man angemeldet die Bilder hoch lädt
-- UC-5: Filtern der angezeigten Bilder nach Title und Zeitraum
+- UC-4: Übersichtsdarstellung aller Bilder in einem Dashboard nur wenn man angemeldet die Bilder hochlädt.
+- UC-5: Filtern der angezeigten Bilder nach Title und Zeitraum.
 - UC-6: Die Bilder können vordefinierten Kategorien zugeordnet werden.
-- UC-7: Generierung eines Freigabelinks (als nicht erratbare GUID) und Zugriff auf das Objekt über Aufruf des Links 
-- UC-8: Möglichkeit eine eigene personalisierten Link nach Wunsch zu erstellen
-- UC-9: Das Bild kann nach einer bestimmten Zeit gelöscht werden
+- UC-7: Generierung eines Freigabelinks (als nicht erratbare GUID) und Zugriff auf das Objekt über Aufruf des Links. 
+- UC-8: Möglichkeit eine eigene personalisierten Link nach Wunsch zu erstellen.
+- UC-9: Das Bild kann nach einer bestimmten Zeit gelöscht werden.
