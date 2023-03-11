@@ -1,5 +1,6 @@
-package de.trio.imageshare.web.Repository;
+package de.trio.imageshare.web.entities;
 
+import de.trio.imageshare.web.entities.RoleDaten;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

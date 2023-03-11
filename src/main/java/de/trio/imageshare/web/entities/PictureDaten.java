@@ -1,29 +1,28 @@
-package de.trio.imageshare.web.indexData.IndexModel;
+package de.trio.imageshare.web.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "data")
-public class Data{
+public class PictureDaten {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private int id;
-    @Column(name ="bildname")
+    @Column(name = "bildname")
     private String bildname;
-    @Column(name ="bildpfad")
+    @Column(name = "bildpfad")
     private String bildpfad;
-    @Column(name ="title")
+    @Column(name = "title")
     private String title;
-    @Column(name ="beschreibung")
+    @Column(name = "beschreibung")
     private String beschreibung;
-    @Column(name ="kategorie")
+    @Column(name = "kategorie")
     private String kategorie;
-    @Column(name ="zeit")
+    @Column(name = "zeit")
     private Integer zeit;
     @Lob
-    @Column(name ="bild")
+    @Column(name = "bild")
     private byte[] bild;
 
     public String getBildpfad() {

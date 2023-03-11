@@ -1,7 +1,9 @@
-package de.trio.imageshare.web.Repository;
+package de.trio.imageshare.web.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import de.trio.imageshare.web.Repository.UserRepository;
+import de.trio.imageshare.web.entities.UserDaten;
 import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

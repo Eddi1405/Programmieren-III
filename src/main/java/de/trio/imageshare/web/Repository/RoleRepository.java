@@ -1,6 +1,6 @@
 package de.trio.imageshare.web.Repository;
 
-import de.trio.imageshare.web.indexData.IndexModel.Data;
+import de.trio.imageshare.web.entities.RoleDaten;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

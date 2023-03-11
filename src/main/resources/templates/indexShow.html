@@ -1,24 +1,24 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">
 
 <head>
-  <title>ImageShare</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>ImageShare</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 
 <body>
-<div th:insert="~{fragments/topnavbar :: navbar}">  </div>
+<div th:insert="~{fragments/topnavbar :: navbar}"></div>
 <div th:each="data : ${dataList}" class="middle">
-<img id="" th:src="@{${data.bildpfad}}">
+    <img id="" th:src="@{${data.bildpfad}}" alt="Fehler">
 </div>
 <div th:each="data : ${dataList}" class="middle">
-  <div class="box">
-  <h3 th:text="${data.title}"></h3>
-  <p th:text="${data.beschreibung}"></p>
-  <p class="box2" th:text="${data.kategorie}"></p>
-    <h3></h3>
+    <div class="box">
+        <h3 th:text="${data.title}"></h3>
+        <p th:text="${data.beschreibung}"></p>
+        <p class="box2" th:text="${data.kategorie}"></p>
+        <h3></h3>
     </div>
-</div>
 </div>
 </body>
 </html>

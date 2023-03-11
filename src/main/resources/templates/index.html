@@ -1,13 +1,14 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">
 
 <head>
     <title>ImageShare</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 
 <body>
-<div th:insert="~{fragments/topnavbar :: navbar}">  </div>
+<div th:insert="~{fragments/topnavbar :: navbar}"></div>
 
 <form class="middle" action="/index" method="post" enctype="multipart/form-data">
     <br>
@@ -37,19 +38,21 @@
         <option value="99">Nie</option>
     </select>
     <br>
-    <p style="width: 206px; padding: 4px 0px; font-size: 15px;margin-top:4px;" class="box2"><input type="checkbox" id="url">Eigene URL</p>
+    <p style="width: 206px; padding: 4px 0; font-size: 15px;margin-top:4px;" class="box2"><input type="checkbox"
+                                                                                                 id="url">Eigene URL
+    </p>
     <div id="urldiv" style="display: none;">
         <input type="text" id="urltext" name="urltext">
     </div>
     <script>
-        var box = document.getElementById("url");
-        var ut = document.getElementById("urldiv");
-        box.addEventListener('change', function() {
-        if(this.checked){
-            ut.style.display = 'block';
-        }else{
-            ut.style.display = 'none';
-        }
+        const box = document.getElementById("url");
+        const ut = document.getElementById("urldiv");
+        box.addEventListener('change', function () {
+            if (this.checked) {
+                ut.style.display = 'block';
+            } else {
+                ut.style.display = 'none';
+            }
         });
 
     </script>

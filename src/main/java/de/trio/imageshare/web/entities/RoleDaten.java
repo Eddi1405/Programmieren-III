@@ -1,4 +1,4 @@
-package de.trio.imageshare.web.Repository;
+package de.trio.imageshare.web.entities;
 
 import jakarta.persistence.*;
 

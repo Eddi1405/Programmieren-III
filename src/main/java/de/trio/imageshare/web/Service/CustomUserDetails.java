@@ -1,9 +1,8 @@
 package de.trio.imageshare.web.Service;
 
 import java.util.Collection;
-import java.util.Optional;
 
-import de.trio.imageshare.web.Repository.UserDaten;
+import de.trio.imageshare.web.entities.UserDaten;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
