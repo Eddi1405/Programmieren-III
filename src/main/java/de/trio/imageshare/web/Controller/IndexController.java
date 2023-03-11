@@ -39,7 +39,7 @@ public class IndexController {
      * Ist dafür da um /index aufzurufen.
      * @return
      */
-    @GetMapping(value = "/")
+    @GetMapping(value = "/index")
     public String getIndexPage() {
         return "index";
     }
