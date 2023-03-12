@@ -1,4 +1,6 @@
 package de.trio.imageshare.web.Secruity;
+import de.trio.imageshare.web.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -15,21 +17,30 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
+    UserRepository userRepository;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
         http.csrf().disable();
         http.authorizeHttpRequests().requestMatchers("/indexShow").authenticated()
                 .anyRequest().permitAll();
-        http.formLogin().loginPage("/login");
+        http.formLogin().loginPage("/login")
+                .loginProcessingUrl("/process_login")
+                .usernameParameter("name")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/index", true);
         return http.build();
 
     }
 
+
     @Bean
-    PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 }
+
 

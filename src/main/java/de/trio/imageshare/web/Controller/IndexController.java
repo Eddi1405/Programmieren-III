@@ -56,7 +56,7 @@ public class IndexController {
      * @return
      * @throws IOException
      */
-    @PostMapping("/")
+    @PostMapping("/index")
     public String addData(@RequestParam("bildpfad") MultipartFile bild, @RequestParam String title, @RequestParam String beschreibung, @RequestParam String kategorie, @RequestParam String urltext, @RequestParam int zeit) throws IOException {
         if (urltext.isEmpty()) {
             do {

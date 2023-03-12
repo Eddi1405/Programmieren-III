@@ -1,34 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
+<html>
 <head>
-    <title>ImageShare</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Login</title>
 </head>
-
 <body>
-<div th:insert="~{fragments/topnavbar :: navbar}">  </div>
+<h1>Login</h1>
 
-<!--TODO UserLogin darf nicht Empty sein-->
+<form method="post" action="/login">
+    <div>
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
 
-<form class="middle" action="#" th:action="@{/login}" method="POST">
-    <br>
-    <br>
-    <h3>Login</h3>
-    <div class="form-group">
-        <input class="form-control" type="text" id="username" name="Name" aria-describedby="userHelpBlock" placeholder="Benutzernamen">
+    <div>
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password" required>
     </div>
-    <div class="form-group">
-        <input class="form-control" type="password" id="password" name="password" aria-describedby="pwdHelpBlock" placeholder="Passwort">
-    </div>
-    <input type="submit" class="btn btn-success" value="Anmelden">
+
+    <button type="submit">Anmelden</button>
 </form>
-
-<div class="middle">
-    <h3>Noch kein Benutzer?</h3>
-    <a href="/register">Hier neu registrieren</a>
-</div>>
 </body>
-
 </html>
