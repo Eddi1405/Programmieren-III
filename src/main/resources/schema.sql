@@ -18,6 +18,7 @@ CREATE TABLE data(
     bildname varchar(50) NOT NULL,
     bildpfad varchar(50) NOT NULL,
     title varchar(50),
+    benutzer varchar(20),
     beschreibung varchar(250),
     kategorie varchar(20),
     zeit int

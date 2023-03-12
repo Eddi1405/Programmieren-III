@@ -4,6 +4,7 @@ import de.trio.imageshare.web.entities.PictureDaten;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -12,5 +13,8 @@ import java.util.Optional;
 @Repository
 public interface PictureRepository extends JpaRepository<PictureDaten, Integer> {
     Optional<PictureDaten> findBybildname(String bildname);
+    List<PictureDaten> findBybenutzer(String benutzer);
+
     boolean existsBybildname(String bildname);
+
 }

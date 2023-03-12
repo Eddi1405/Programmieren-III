@@ -23,6 +23,7 @@ public class IndexController {
     private final PictureRepository pictureRepository;
     private final IndexService indexService;
     private final String VALUES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    LoginController loginController;
     String urlname;
 
     /**
@@ -30,9 +31,10 @@ public class IndexController {
      * @param pictureRepository
      * @param indexService
      */
-    public IndexController(PictureRepository pictureRepository, IndexService indexService) {
+    public IndexController(PictureRepository pictureRepository, IndexService indexService, LoginController loginController) {
         this.pictureRepository = pictureRepository;
         this.indexService = indexService;
+        this.loginController = loginController;
     }
 
     /**
@@ -62,14 +64,22 @@ public class IndexController {
             do {
                 urlname = RandomValue(6);
             } while (pictureRepository.existsBybildname(urlname));
-            indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit);
+            if(loginController.user.isEmpty()){
+                indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, "null");
+            }else{
+                indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, loginController.user);
+            }
             return "redirect:/" + urlname;
         } else {
             if (pictureRepository.existsBybildname(urltext)) {
                 return "index";
             } else {
                 urlname = urltext;
-                indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit);
+                if(loginController.user.isEmpty()){
+                    indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, "null");
+                }else{
+                    indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, loginController.user);
+                }
                 return "redirect:/" + urlname;
             }
         }

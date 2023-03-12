@@ -21,6 +21,8 @@ public class PictureDaten {
     private String kategorie;
     @Column(name = "zeit")
     private Integer zeit;
+    @Column(name = "benutzer")
+    private String benutzer;
     @Lob
     @Column(name = "bild")
     private byte[] bild;
@@ -87,5 +89,13 @@ public class PictureDaten {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getBenutzer() {
+        return benutzer;
+    }
+
+    public void setBenutzer(String benutzer) {
+        this.benutzer = benutzer;
     }
 }
