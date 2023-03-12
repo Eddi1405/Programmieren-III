@@ -24,7 +24,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
         http.csrf().disable();
-        http.authorizeHttpRequests().requestMatchers("/indexShow").authenticated()
+        http.authorizeHttpRequests().requestMatchers("/indexShow/**").authenticated()
+                //.requestMatchers("/dashboard").authenticated()
                 .anyRequest().permitAll();
         http.formLogin().loginPage("/login")
                 .loginProcessingUrl("/process_login")
