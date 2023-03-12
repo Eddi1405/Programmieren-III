@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Controller
 public class LoginController {
+    public String user = "test";
     @Autowired
     private UserRepository userRepository;
 
@@ -37,7 +38,7 @@ public class LoginController {
             UserDaten user = optionalUser.get();
             if (passwordEncoder.matches(password, user.getPassword())) {
                 session.setAttribute("user", user);
-                return "redirect:/register";
+                return "redirect:/dashboard";
             }
         }
 

@@ -29,8 +29,7 @@ public class SecurityConfig {
         http.formLogin().loginPage("/login")
                 .loginProcessingUrl("/process_login")
                 .usernameParameter("name")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/index", true);
+                .passwordParameter("password");
         return http.build();
 
     }
