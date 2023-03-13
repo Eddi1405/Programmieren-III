@@ -10,6 +10,22 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Dieser Code definiert den Service "IndexService", der für die Verarbeitung von Bildern in der Anwendung verantwortlich ist.
+ * Der Service verwendet das "PictureRepository", um mit der Datenbank zu interagieren, und das "PlatformTransactionManager",
+ * um Transaktionen für das Löschen von Bildern nach einer bestimmten Zeit zu verwalten.
+ *
+ * Der Service hat die folgenden Methoden:
+ *
+ * saveData(): speichert die Metadaten eines Bildes (Name, Pfad, Titel, Beschreibung, Kategorie, Zeit, Benutzer)
+ * und das Bild selbst in der Datenbank. Wenn die Zeit auf 99 gesetzt wird, wird das Bild nicht automatisch gelöscht.
+ *
+ * getNamebybildname(): gibt das Bild zurück, das mit dem gegebenen Namen gespeichert ist.
+ *
+ * getUserbybenutzer(): gibt eine Liste von Bildern zurück, die von einem bestimmten Benutzer gespeichert wurden.
+ *
+ * deleteDataAfter(): plant eine Aufgabe, die das Bild mit dem gegebenen Namen nach einer bestimmten Zeit aus der Datenbank löscht.
+ */
 
 @Service
 public class IndexService {

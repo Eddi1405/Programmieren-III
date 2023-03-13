@@ -8,7 +8,14 @@ import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Diese Klasse gibt die Informationen eines Users vor.
+ * Die Annotation @Entity gibt an, dass es sich um eine JPA-Entity-Klasse handelt.
+ * Die Annotation @Table gibt den Tabellennamen in der Datenbank an, auf die sich diese Entity bezieht.
+ * Die Annotation @Id gibt an, dass das Feld id der Primärschlüssel der Tabelle ist.
+ * Die Annotation @GeneratedValue gibt an, dass der Primärschlüssel automatisch generiert wird.
+ * Es gibt auch Validierungsannotationen wie @NotBlank, @Size und @Email, um sicherzustellen, dass die Eingabe des Benutzers validiert wird.
+ */
 @Entity
 @Table(name = "users")
 public class UserDaten {
@@ -31,6 +38,10 @@ public class UserDaten {
     @Column
     private String role = "user";
 
+
+    /**
+     * Erstellt eine Join Table mit einer ManytoMany Beziehung, um die Rollen eines Users zu speichern.
+     */
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

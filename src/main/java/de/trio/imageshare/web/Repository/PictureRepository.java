@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Ist dafür da das man aktionen in der datenbank ausführen kann
+ * Ist dafür da das man aktionen in der Datenbank ausführen kann
  */
 @Repository
 public interface PictureRepository extends JpaRepository<PictureDaten, Integer> {
