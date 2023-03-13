@@ -10,7 +10,7 @@
 <div th:insert="~{fragments/topnavbar :: navbar}"></div>
 
 
-<form class="middle" method="post" action="/login">
+<form class="middle" method="post" id="form" action="/login">
     <br>
     <br>
     <h3>Login</h3>
@@ -24,6 +24,14 @@
 
 
     <input type="submit" value="Anmelden" >
+
+    <script>
+        const box = document.getElementById("form");
+        box.addEventListener('submit', function () {
+            alert("Login erfolgreich");
+        });
+
+    </script>
 </form>
 </body>
 </html>
