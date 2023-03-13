@@ -15,7 +15,7 @@
         <br>
         <h3>Registrieren</h3>
     </div>
-    <form th:action="@{/process_register}" th:object="${user}"
+    <form th:action="@{/process_register}" id="form" th:object="${user}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
             <div class="form-group row">
@@ -38,8 +38,14 @@
                 </div>
             </div>
             <div>
-                <input type="submit" value="Registrieren" class="btn btn-primary"/>
+                <input type="submit" id="reg" value="Registrieren" class="btn btn-primary"/>
+                <script>
+                    const box = document.getElementById("form");
+                    box.addEventListener('submit', function () {
+                        alert("Registrierung erfolgreich");
+                    });
 
+                </script>
                 <h3>Sie haben bereits einen Account?</h3>
                 <a href="/login">Hier Einloggen</a>
             </div>

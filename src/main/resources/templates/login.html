@@ -8,20 +8,22 @@
 </head>
 <body>
 <div th:insert="~{fragments/topnavbar :: navbar}"></div>
-<h1>Login</h1>
+
 
 <form class="middle" method="post" action="/login">
+    <br>
+    <br>
+    <h3>Login</h3>
     <div>
-        <label for="username">Benutzername:</label>
-        <input type="text" id="username" class="form-control" name="username" required>
+
+        <input type="text" id="username" class="form-control" name="username" placeholder="Benutzername" required>
     </div>
     <div>
-        <label for="password">Passwort:</label>
-        <input type="password" id="password" class="form-control" name="password" required>
+        <input type="password" id="password" class="form-control" name="password" placeholder="Passwort" required>
     </div>
 
 
-    <button type="submit">Anmelden </button>
+    <input type="submit" value="Anmelden" >
 </form>
 </body>
 </html>
