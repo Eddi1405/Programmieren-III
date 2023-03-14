@@ -53,7 +53,7 @@ public class RegisterController {
         user.setPassword(encodedPassword);
         if(!userRepo.existsByUsername(user.getUsername())&& !userRepo.existsByEmail(user.getEmail())){
             userRepo.save(user);
-            return "register_success";
+            return "redirect:/login";
 
         }else{
             return "register_error";

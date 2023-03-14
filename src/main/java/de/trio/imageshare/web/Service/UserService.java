@@ -1,6 +1,8 @@
 package de.trio.imageshare.web.Service;
 
+import de.trio.imageshare.web.Repository.PictureRepository;
 import de.trio.imageshare.web.Repository.UserRepository;
+import de.trio.imageshare.web.entities.PictureDaten;
 import de.trio.imageshare.web.entities.UserDaten;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,6 @@ public class UserService {
         return userRepository.findByUsername(username);
 
     }
+
 
 }

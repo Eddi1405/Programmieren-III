@@ -43,8 +43,9 @@ public class DashboardController {
     @GetMapping(value = "dashboard")
     public String getDashboardPage(Model model) {
         if(loginController.user != null){
-            List<PictureDaten> data = indexService.getUserbybenutzer("test", pictureRepository);
+            List<PictureDaten> data = indexService.getUserbybenutzer(loginController.user, pictureRepository);
             model.addAttribute("dataList", data);
+            model.addAttribute("log", loginController.log);
             if(data == null){
                 return "NoData";
             }else{

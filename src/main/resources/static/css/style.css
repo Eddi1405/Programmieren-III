@@ -67,8 +67,15 @@ input[type = email]{
   margin-bottom: 2px;
 }
 
+input[type = date]{
+  padding: 6px 14px;
+  background-color: #ffffff ;
+  margin-bottom: 2px;
+}
+
 select{
   background-color: white;
+  padding: 5px 14px;
 }
 
 input:focus{

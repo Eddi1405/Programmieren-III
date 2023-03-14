@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div th:insert="~{fragments/topnavbar :: navbar}"></div>
+<div th:insert="${log} :: navbar "></div>
 
 <form class="middle" action="/index" method="post" enctype="multipart/form-data">
     <br>
@@ -57,10 +57,6 @@
 
     </script>
     <input type="submit" value="Hochladen">
-
-    <div class="middle">
-        <a href="/logout">Hier Ausloggen</a>
-    </div>
 
 </form>
 </body>

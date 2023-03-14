@@ -42,7 +42,9 @@ public class IndexController {
      * @return
      */
     @GetMapping(value = "/index")
-    public String getIndexPage() {
+    public String getIndexPage(Model model) {
+
+        model.addAttribute("log", loginController.log);
         return "index";
     }
 
@@ -94,6 +96,7 @@ public class IndexController {
     public String getIndexShowPage(Model model,@PathVariable("name") String name) {
         PictureDaten data = indexService.getNamebybildname(name, pictureRepository);
         model.addAttribute("dataList", data);
+        model.addAttribute("log", loginController.log);
         if(data == null){
             return "NoData";
         }else{

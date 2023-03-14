@@ -95,6 +95,5 @@ public class UserDaten {
         this.roles = roles;
     }
 
-
 }
 
