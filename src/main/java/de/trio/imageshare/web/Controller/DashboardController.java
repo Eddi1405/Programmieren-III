@@ -63,13 +63,12 @@ public class DashboardController {
             if(!title.isEmpty()){
                 List<PictureDaten> data = pictureRepository.findByTitle(title, loginController.user);
                 model.addAttribute("dataList", data);
-            }
-            if(!kategorie.isEmpty()) {
+
+            } else if(!kategorie.isEmpty()) {
                 List<PictureDaten> data = pictureRepository.findByKategorie(kategorie, loginController.user);
                 model.addAttribute("dataList", data);
 
-            }
-            if(!kategorie.isEmpty() && !title.isEmpty()) {
+            } else if(!kategorie.isEmpty() && !title.isEmpty()) {
                 List<PictureDaten> data = pictureRepository.findByTitleKategorie(title, kategorie, loginController.user);
                 model.addAttribute("dataList", data);
             }
