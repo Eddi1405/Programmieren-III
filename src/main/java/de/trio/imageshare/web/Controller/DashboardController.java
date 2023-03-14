@@ -22,6 +22,7 @@ import java.util.List;
 public class DashboardController {
     private final PictureRepository pictureRepository;
     private final IndexService indexService;
+    String user;
     LoginController loginController;
 
     /**
@@ -55,20 +56,25 @@ public class DashboardController {
     }
 
     @PostMapping(value = "dashboard")
-    public String getDashboard(Model model, @RequestParam("title") String title,  @RequestParam("datum2") Date datum2, @RequestParam("kategorie") String kategorie) {
+    public String getDashboard(Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie) {
+
         if (loginController.user != null) {
 
-            if (title == "" || title == null) {
-                title = "*";
+            if(!title.isEmpty()){
+                List<PictureDaten> data = pictureRepository.findByTitle(title, loginController.user);
+                model.addAttribute("dataList", data);
             }
-            List<PictureDaten> data = pictureRepository.findByFields(title, kategorie, datum2);
-            model.addAttribute("dataList", data);
+            if(!kategorie.isEmpty()) {
+                List<PictureDaten> data = pictureRepository.findByKategorie(kategorie, loginController.user);
+                model.addAttribute("dataList", data);
 
-            if (data == null) {
-                return "NoData";
-            } else {
-                return "dashboard";
             }
+            if(!kategorie.isEmpty() && !title.isEmpty()) {
+                List<PictureDaten> data = pictureRepository.findByTitleKategorie(title, kategorie, loginController.user);
+                model.addAttribute("dataList", data);
+            }
+
+            return "dashboard";
         } else {
             return "NoData";
         }

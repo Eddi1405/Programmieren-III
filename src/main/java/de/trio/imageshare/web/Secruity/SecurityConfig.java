@@ -33,6 +33,14 @@ public class SecurityConfig {
                 .loginProcessingUrl("/process_login")
                 .usernameParameter("name")
                 .passwordParameter("password");
+
+        // configure logout
+        http.logout()
+                .invalidateHttpSession(true)
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .deleteCookies("JSESSIONID");
+
         return http.build();
 
     }

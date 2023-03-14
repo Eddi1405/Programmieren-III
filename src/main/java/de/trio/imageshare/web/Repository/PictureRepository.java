@@ -19,9 +19,13 @@ public interface PictureRepository extends JpaRepository<PictureDaten, Integer> 
 
     boolean existsBybildname(String bildname);
 
-    @Query(value = "SELECT * FROM data WHERE title = ?1 AND kategorie = ?2 AND datum < ?3 AND datum > ?4", nativeQuery = true)
-    List<PictureDaten> findByFields(String title, String kategorie, Date datum2);
+    @Query(value = "SELECT * FROM data WHERE kategorie = ?1 AND benutzer = ?2" , nativeQuery = true)
+    List<PictureDaten> findByKategorie(String param1, String param2);
 
+    @Query(value = "SELECT * FROM data WHERE title = ?1 AND benutzer = ?2" , nativeQuery = true)
+    List<PictureDaten> findByTitle(String param1, String param2);
 
+    @Query(value = "SELECT * FROM data WHERE title = ?1 AND kategorie = ?2 AND benutzer = ?3" , nativeQuery = true)
+    List<PictureDaten> findByTitleKategorie(String param1, String param2, String param3);
 
 }

@@ -8,11 +8,11 @@
 </head>
 
 <body>
-<div th:insert="${log} :: navbar "></div>
+<div th:insert="~{/fragments/topnavbarLog:: navbar}"></div>
 <div>
 
         <form class="middle" action="/dashboard" method="post">
-            <input type="text" placeholder="Title" id="title" name="title">
+            <input type="text" placeholder="Title" id="title">
 
             <input type="date" id="datum1">
 
