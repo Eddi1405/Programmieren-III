@@ -68,7 +68,7 @@ input[type = email]{
 }
 
 input[type = date]{
-  padding: 6px 14px;
+  padding: 5px 14px;
   background-color: #ffffff ;
   margin-bottom: 2px;
 }

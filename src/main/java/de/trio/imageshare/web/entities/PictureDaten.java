@@ -2,6 +2,8 @@ package de.trio.imageshare.web.entities;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 /**
  * Diese Klasse gibt die Informationen eines Bildes vor.
  * Die Annotation @Entity gibt an, dass es sich um eine JPA-Entity-Klasse handelt.
@@ -30,6 +32,9 @@ public class PictureDaten {
     private Integer zeit;
     @Column(name = "benutzer")
     private String benutzer;
+
+    @Column(name = "datum")
+    private Date datum;
     @Lob
     @Column(name = "bild")
     private byte[] bild;
@@ -104,5 +109,13 @@ public class PictureDaten {
 
     public void setBenutzer(String benutzer) {
         this.benutzer = benutzer;
+    }
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
     }
 }

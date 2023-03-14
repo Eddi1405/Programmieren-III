@@ -8,6 +8,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -48,6 +50,7 @@ public class IndexService {
         data.setBeschreibung(beschreibung);
         data.setKategorie(kategorie);
         data.setZeit(zeit);
+        data.setDatum(Date.valueOf(LocalDate.now()));
         if(!benutzer.isEmpty()){
             data.setBenutzer(benutzer);
         }

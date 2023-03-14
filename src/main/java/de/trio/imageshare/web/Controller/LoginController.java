@@ -25,8 +25,10 @@
  */
     @Controller
     public class LoginController {
+
         public String user;
-        public String log = "/fragments/topnavbar";
+        public String out = "/fragments/topnavbar";
+        public String in = "/fragments/topnavbarLog";
         @Autowired
         private UserRepository userRepository;
 
@@ -42,8 +44,8 @@
      * @return
      */
         @GetMapping("/login")
-        public String showLoginForm(Model model) {
-            model.addAttribute("log", log);
+        public String showLoginForm(Model model,HttpSession session) {
+            navbar(model,session);
             return "login";
         }
 
@@ -69,13 +71,19 @@
             if (optionalUser.isPresent()) {
                 UserDaten user = optionalUser.get();
                 if (passwordEncoder.matches(password, user.getPassword())) {
-                    session.setAttribute("user", user);
+                    session.setAttribute("user", username);
                     this.user = username;
-                    log = "/fragments/topnavbarLog";
                     return "redirect:/dashboard";
                 }
             }
-            log = "/fragments/topnavbar";
             return "redirect:/login?error";
+        }
+
+        public void navbar(Model model, HttpSession session){
+            if( session.getAttribute("user") != null){
+                model.addAttribute("log", in);
+            }else{
+                model.addAttribute("log", out);
+            }
         }
     }

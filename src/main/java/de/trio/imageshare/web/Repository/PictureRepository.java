@@ -2,8 +2,10 @@ package de.trio.imageshare.web.Repository;
 
 import de.trio.imageshare.web.entities.PictureDaten;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +18,10 @@ public interface PictureRepository extends JpaRepository<PictureDaten, Integer> 
     List<PictureDaten> findBybenutzer(String benutzer);
 
     boolean existsBybildname(String bildname);
+
+    @Query(value = "SELECT * FROM data WHERE title = ?1 AND kategorie = ?2 AND datum < ?3 AND datum > ?4", nativeQuery = true)
+    List<PictureDaten> findByFields(String title, String kategorie, Date datum2);
+
+
 
 }

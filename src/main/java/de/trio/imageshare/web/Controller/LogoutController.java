@@ -16,8 +16,7 @@ public class LogoutController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate(); //Session löschen
-        loginController.log = "fragments/topnavbar :: navbar";
-
+        loginController.user = null;
         return "redirect:/register_success"; //Login-Seite mit Bestätigungsnachricht aufrufen
     }
 }

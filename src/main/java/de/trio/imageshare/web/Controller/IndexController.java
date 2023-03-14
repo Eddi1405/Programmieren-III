@@ -4,6 +4,7 @@ import de.trio.imageshare.web.entities.PictureDaten;
 import de.trio.imageshare.web.Repository.PictureRepository;
 import de.trio.imageshare.web.Service.IndexService;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -41,10 +42,15 @@ public class IndexController {
      * Ist dafür da um /index aufzurufen.
      * @return
      */
-    @GetMapping(value = "/index")
-    public String getIndexPage(Model model) {
 
-        model.addAttribute("log", loginController.log);
+    @GetMapping(value = "/")
+    public String getPage(Model model,HttpSession session) {
+        loginController.navbar(model,session);
+        return "index";
+    }
+    @GetMapping(value = "/index")
+    public String getIndexPage(Model model,HttpSession session) {
+        loginController.navbar(model,session);
         return "index";
     }
 
@@ -66,7 +72,7 @@ public class IndexController {
             do {
                 urlname = RandomValue(6);
             } while (pictureRepository.existsBybildname(urlname));
-            if(loginController.user.isEmpty()){
+            if(loginController.user == null){
                 indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, "null");
             }else{
                 indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, loginController.user);
@@ -77,7 +83,7 @@ public class IndexController {
                 return "index";
             } else {
                 urlname = urltext;
-                if(loginController.user.isEmpty()){
+                if(loginController.user == null){
                     indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, "null");
                 }else{
                     indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, loginController.user);
@@ -93,10 +99,10 @@ public class IndexController {
      * @return
      */
     @GetMapping(value = "/{name}")
-    public String getIndexShowPage(Model model,@PathVariable("name") String name) {
+    public String getIndexShowPage(Model model,@PathVariable("name") String name,HttpSession session) {
         PictureDaten data = indexService.getNamebybildname(name, pictureRepository);
         model.addAttribute("dataList", data);
-        model.addAttribute("log", loginController.log);
+        loginController.navbar(model,session);
         if(data == null){
             return "NoData";
         }else{

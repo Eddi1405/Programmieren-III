@@ -21,5 +21,6 @@ CREATE TABLE data(
     benutzer varchar(20),
     beschreibung varchar(250),
     kategorie varchar(20),
+    datum date,
     zeit int
     ) ;
