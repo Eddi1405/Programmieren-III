@@ -22,12 +22,14 @@ public class LoginController {
     public String user;
     public String out = "/fragments/topnavbar";
     public String in = "/fragments/topnavbarLog";
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    public LoginController(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
     /**
      * GetMapping login gibt bei Aufruf des Pfades das LoginFormular wieder.
      *

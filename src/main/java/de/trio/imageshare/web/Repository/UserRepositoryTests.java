@@ -1,10 +1,9 @@
-package de.trio.imageshare.web.Test;
+package de.trio.imageshare.web.Repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import de.trio.imageshare.web.Repository.UserRepository;
 import de.trio.imageshare.web.entities.UserDaten;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
@@ -22,9 +21,7 @@ public class UserRepositoryTests {
 
     @Autowired
     private UserRepository repo;
-    public UserRepositoryTests(UserRepository repo){
-        this.repo =repo;
-    }
+
     @Test
     public void testCreateUser() {
         UserDaten user = new UserDaten();
@@ -37,6 +34,5 @@ public class UserRepositoryTests {
         UserDaten existUser = entityManager.find(UserDaten.class, savedUser.getId());
 
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
-
     }
 }
