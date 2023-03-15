@@ -48,7 +48,7 @@ public class DashboardController {
     @GetMapping(value = "dashboard")
     public String getDashboardPage(Model model, HttpSession session) {
         loginController.navbar(model, session);
-        if (loginController.user != null) {
+        if (session.getAttribute("user")!= null) {
             List<PictureDaten> data = pictureRepository.findBybenutzer(loginController.user);
             model.addAttribute("dataList", data);
             return "dashboard";
@@ -57,8 +57,8 @@ public class DashboardController {
     }
 
     @PostMapping(value = "dashboard")
-    public String getDashboard(Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie, @RequestParam("datum1") String datum1, @RequestParam("datum2") String datum2) {
-        if (loginController.user != null) {
+    public String getDashboard(HttpSession session, Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie, @RequestParam("datum1") String datum1, @RequestParam("datum2") String datum2) {
+        if (session.getAttribute("user") != null) {
 
             if (!kategorie.isEmpty() && !title.isEmpty() && !datum1.isEmpty() && !datum2.isEmpty()) {
                 List<PictureDaten> data = pictureRepository.findByKategorieTitleDatum(kategorie, title, datum1, datum2, loginController.user);
