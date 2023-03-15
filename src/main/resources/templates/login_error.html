@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>ImageShare</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div th:insert="~{${log}:: navbar}"></div>
+
+<form action="/login" class="middle" id="form" method="post">
+    <br>
+    <br>
+    <h3>Login</h3>
+    <input id="username" name="username" placeholder="Benutzername" required type="text">
+    <br>
+    <input id="password" name="password" placeholder="Passwort" required type="password">
+    <br>
+    <input type="submit" value="Anmelden">
+
+</form>
+
+<p class="middle">Benutzername oder Passwort falsch</p>
+
+</body>
+</html>
