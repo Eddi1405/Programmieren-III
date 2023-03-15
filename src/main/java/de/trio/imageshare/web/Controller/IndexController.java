@@ -25,15 +25,14 @@ import java.util.Random;
 public class IndexController {
     private final PictureRepository pictureRepository;
     private final IndexService indexService;
-    private final String VALUES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     LoginController loginController;
     String urlname;
 
     /**
      * In dem Constructor wird pictureRepository und indexService initialisiert.
-     *
      * @param pictureRepository
      * @param indexService
+     * @param loginController
      */
     public IndexController(PictureRepository pictureRepository, IndexService indexService, LoginController loginController) {
         this.pictureRepository = pictureRepository;
@@ -43,18 +42,25 @@ public class IndexController {
 
     /**
      * Ist dafür da um /index aufzurufen.
-     *
+     * @param model
+     * @param session
      * @return
      */
 
     @GetMapping(value = "/")
-    public String getPage(Model model, HttpSession session) {
+    public String showIndex1(Model model, HttpSession session) {
         loginController.navbar(model, session);
         return "index";
     }
 
+    /**
+     * Ist dafür da um /index aufzurufen.
+     * @param model
+     * @param session
+     * @return
+     */
     @GetMapping(value = "/index")
-    public String getIndexPage(Model model, HttpSession session) {
+    public String showIndex2(Model model, HttpSession session) {
         loginController.navbar(model, session);
         return "index";
     }
@@ -101,12 +107,13 @@ public class IndexController {
 
     /**
      * Übergibt die Daten wenn sie vorhanden sind an die HTML Seite.
-     *
      * @param model
+     * @param name
+     * @param session
      * @return
      */
     @GetMapping(value = "/{name}")
-    public String getIndexShowPage(Model model, @PathVariable("name") String name, HttpSession session) {
+    public String showIndexShow(Model model, @PathVariable("name") String name, HttpSession session) {
         PictureDaten data = indexService.getNamebybildname(name, pictureRepository);
         model.addAttribute("dataList", data);
         loginController.navbar(model, session);
@@ -120,7 +127,6 @@ public class IndexController {
 
     /**
      * Gibt dem Bild ein Pfad über den man das Bild aufrufen kann.
-     *
      * @param name
      * @return
      */
@@ -145,11 +151,11 @@ public class IndexController {
         char[] value = new char[length];
         Random random = new Random();
         for (int i = 0; i < length; i++) {
+            String VALUES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             int index = random.nextInt(VALUES.length());
             value[i] = VALUES.charAt(index);
         }
-        String url = new String(value);
-        return url;
+        return new String(value);
     }
 }
 

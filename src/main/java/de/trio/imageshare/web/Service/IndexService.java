@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -64,11 +63,6 @@ public class IndexService {
 
     public PictureDaten getNamebybildname(String bildname, PictureRepository pictureRepository) {
         return pictureRepository.findBybildname(bildname).orElse(null);
-    }
-
-    public List<PictureDaten> getUserbybenutzer(String benutzer, PictureRepository pictureRepository) {
-        List<PictureDaten> data = pictureRepository.findBybenutzer(benutzer);
-        return data;
     }
 
     public void deleteDataAfter(String bildname, int delay, PictureRepository pictureRepository) {

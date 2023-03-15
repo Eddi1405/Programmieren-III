@@ -1,7 +1,6 @@
 package de.trio.imageshare.web.Controller;
 
 import de.trio.imageshare.web.Repository.PictureRepository;
-import de.trio.imageshare.web.Service.IndexService;
 import de.trio.imageshare.web.entities.PictureDaten;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -20,20 +19,16 @@ import java.util.List;
 @Controller
 public class DashboardController {
     private final PictureRepository pictureRepository;
-    private final IndexService indexService;
-    String user;
     LoginController loginController;
 
     /**
      * Die unten genannten Parameter werden im Konstruktor übergeben.
      *
      * @param pictureRepository
-     * @param indexService
      * @param loginController
      */
-    public DashboardController(PictureRepository pictureRepository, IndexService indexService, LoginController loginController) {
+    public DashboardController(PictureRepository pictureRepository, LoginController loginController) {
         this.pictureRepository = pictureRepository;
-        this.indexService = indexService;
         this.loginController = loginController;
     }
 
@@ -46,7 +41,7 @@ public class DashboardController {
      * @return
      */
     @GetMapping(value = "dashboard")
-    public String getDashboardPage(Model model, HttpSession session) {
+    public String showDashboard(Model model, HttpSession session) {
         loginController.navbar(model, session);
         if (session.getAttribute("user")!= null) {
             List<PictureDaten> data = pictureRepository.findBybenutzer(loginController.user);
@@ -56,8 +51,18 @@ public class DashboardController {
         return "NoData";
     }
 
+    /**
+     * Ist für den Filter von der Dashboard Seite. Je nachdem welche Parameter gegeben werden wird eine andere Abfrage ausgeführt.
+     * @param session
+     * @param model
+     * @param title
+     * @param kategorie
+     * @param datum1
+     * @param datum2
+     * @return
+     */
     @PostMapping(value = "dashboard")
-    public String getDashboard(HttpSession session, Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie, @RequestParam("datum1") String datum1, @RequestParam("datum2") String datum2) {
+    public String showDashboardFilter(HttpSession session, Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie, @RequestParam("datum1") String datum1, @RequestParam("datum2") String datum2) {
         if (session.getAttribute("user") != null) {
 
             if (!kategorie.isEmpty() && !title.isEmpty() && !datum1.isEmpty() && !datum2.isEmpty()) {
@@ -82,7 +87,6 @@ public class DashboardController {
             } else if (!kategorie.isEmpty()) {
                 List<PictureDaten> data = pictureRepository.findByKategorie(kategorie, loginController.user);
                 model.addAttribute("dataList", data);
-
 
             } else if (!datum1.isEmpty() && !datum2.isEmpty()) {
                 List<PictureDaten> data = pictureRepository.findByDatum(datum1, datum2, loginController.user);

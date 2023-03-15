@@ -5,7 +5,6 @@ import de.trio.imageshare.web.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,26 +17,24 @@ public class RegisterController {
 
     @Autowired
     private UserRepository userRepo;
-    private UserService userService;
+    private final UserService userService;
 
     public RegisterController(UserService userService) {
         this.userService = userService;
     }
 
-
     /**
      * Speichert die im Formular eingegebenen Daten und speichert diese als neue UserDaten in der Datenbank ab.
      *
-     * @param model
      * @return
      */
     @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        return "signup_form";
+    public String showRegister() {
+        return "register";
     }
 
     @GetMapping("/register_error")
-    public String showRegistration_error(Model model) {
+    public String showRegister_error() {
         return "register_error";
     }
 

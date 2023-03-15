@@ -1,7 +1,6 @@
 package de.trio.imageshare.web.Controller;
 
 import de.trio.imageshare.web.Repository.UserRepository;
-import de.trio.imageshare.web.Service.UserService;
 import de.trio.imageshare.web.entities.UserDaten;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +28,13 @@ public class LoginController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UserService userService;
-
-    public LoginController(UserService userService) {
-        this.userService = userService;
-    }
-
     /**
      * GetMapping login gibt bei Aufruf des Pfades das LoginFormular wieder.
      *
      * @return
      */
     @GetMapping("/login")
-    public String showLoginForm(Model model, HttpSession session) {
+    public String showLogin(Model model, HttpSession session) {
         navbar(model, session);
         return "login";
     }
@@ -77,12 +70,23 @@ public class LoginController {
         return "redirect:/login_error";
     }
 
+    /**
+     * Zeigt die Loginerror Seite an.
+     * @param model
+     * @param session
+     * @return
+     */
     @GetMapping("/login_error")
-    public String showLoginErrorForm(Model model, HttpSession session) {
+    public String showLogin_error(Model model, HttpSession session) {
         navbar(model, session);
         return "login_error";
     }
 
+    /**
+     * Ändert die Navigationsbar je nach dem ob ein user angemeldet ist oder nicht.
+     * @param model
+     * @param session
+     */
     public void navbar(Model model, HttpSession session) {
         if (session.getAttribute("user") != null) {
             model.addAttribute("log", in);

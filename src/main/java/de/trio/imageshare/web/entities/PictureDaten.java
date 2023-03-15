@@ -1,7 +1,6 @@
 package de.trio.imageshare.web.entities;
 
 import jakarta.persistence.*;
-
 import java.sql.Date;
 
 /**
