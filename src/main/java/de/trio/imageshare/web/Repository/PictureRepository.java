@@ -26,6 +26,17 @@ public interface PictureRepository extends JpaRepository<PictureDaten, Integer> 
     List<PictureDaten> findByTitle(String param1, String param2);
 
     @Query(value = "SELECT * FROM data WHERE title = ?1 AND kategorie = ?2 AND benutzer = ?3" , nativeQuery = true)
-    List<PictureDaten> findByTitleKategorie(String param1, String param2, String param3);
+    List<PictureDaten> findByKategorieTitle(String param1, String param2, String param3);
 
+    @Query(value = "SELECT * FROM data WHERE datum >= ?1 AND datum <= ?2 AND benutzer = ?3" , nativeQuery = true)
+    List<PictureDaten> findByDatum(String param1,String param2, String param3);
+
+    @Query(value = "SELECT * FROM data WHERE kategorie = ?1 AND datum >= ?2 AND datum <= ?3 AND benutzer = ?4" , nativeQuery = true)
+    List<PictureDaten> findByKategorieDatum(String param1, String param2,String param3, String param4);
+
+    @Query(value = "SELECT * FROM data WHERE title = ?1 AND datum >= ?2 AND datum <= ?3 AND benutzer = ?4" , nativeQuery = true)
+    List<PictureDaten> findByTitleDatum(String param1, String param2,String param3, String param4);
+
+    @Query(value = "SELECT * FROM data WHERE kategorie = ?1 AND title = ?2 AND datum >= ?3 AND datum <= ?4 AND benutzer = ?5" , nativeQuery = true)
+    List<PictureDaten> findByKategorieTitleDatum(String param1, String param2,String param3, String param4,String param5);
 }

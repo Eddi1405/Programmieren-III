@@ -1,4 +1,4 @@
-package de.trio.imageshare.web.Secruity;
+package de.trio.imageshare.web.Config;
 import de.trio.imageshare.web.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

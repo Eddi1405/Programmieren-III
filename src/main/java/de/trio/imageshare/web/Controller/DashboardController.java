@@ -4,6 +4,7 @@ import de.trio.imageshare.web.Repository.PictureRepository;
 import de.trio.imageshare.web.Service.IndexService;
 import de.trio.imageshare.web.entities.PictureDaten;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Dieser Controller ist dafür da, um ein Dashboard für die des Nutzers hochgeladenen Bilder zu erstellen.
  */
+@Slf4j
 @Controller
 public class DashboardController {
     private final PictureRepository pictureRepository;
@@ -49,18 +51,34 @@ public class DashboardController {
     @GetMapping(value = "dashboard")
     public String getDashboardPage(Model model,HttpSession session) {
         loginController.navbar(model, session);
-        if (loginController.user == null) {
-            return "NoData";
+        if (loginController.user != null) {
+            List<PictureDaten> data = pictureRepository.findBybenutzer(loginController.user);
+            model.addAttribute("dataList", data);
+            return "dashboard";
         }
-        return "dashboard";
+        return "NoData";
     }
 
     @PostMapping(value = "dashboard")
-    public String getDashboard(Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie) {
-
+    public String getDashboard(Model model, @RequestParam("title") String title, @RequestParam("kategorie") String kategorie, @RequestParam("datum1") String datum1, @RequestParam("datum2") String datum2) {
         if (loginController.user != null) {
 
-            if(!title.isEmpty()){
+            if(!kategorie.isEmpty() && !title.isEmpty() && !datum1.isEmpty() && !datum2.isEmpty()){
+                List<PictureDaten> data = pictureRepository.findByKategorieTitleDatum(kategorie, title, datum1, datum2, loginController.user);
+                model.addAttribute("dataList", data);
+
+            }else if(!kategorie.isEmpty() && !datum1.isEmpty() && !datum2.isEmpty()){
+                List<PictureDaten> data = pictureRepository.findByKategorieDatum(kategorie, datum1, datum2, loginController.user);
+                model.addAttribute("dataList", data);
+
+            }else if (!title.isEmpty() && !datum1.isEmpty() && !datum2.isEmpty()){
+                List<PictureDaten> data = pictureRepository.findByTitleDatum(title, datum1, datum2, loginController.user);
+                model.addAttribute("dataList", data);
+
+            }else if(!kategorie.isEmpty() && !title.isEmpty()) {
+                List<PictureDaten> data = pictureRepository.findByKategorieTitle(title, kategorie, loginController.user);
+                model.addAttribute("dataList", data);
+            } else if(!title.isEmpty()){
                 List<PictureDaten> data = pictureRepository.findByTitle(title, loginController.user);
                 model.addAttribute("dataList", data);
 
@@ -68,8 +86,9 @@ public class DashboardController {
                 List<PictureDaten> data = pictureRepository.findByKategorie(kategorie, loginController.user);
                 model.addAttribute("dataList", data);
 
-            } else if(!kategorie.isEmpty() && !title.isEmpty()) {
-                List<PictureDaten> data = pictureRepository.findByTitleKategorie(title, kategorie, loginController.user);
+
+            } else if(!datum1.isEmpty() && !datum2.isEmpty()){
+                List<PictureDaten> data = pictureRepository.findByDatum(datum1, datum2, loginController.user);
                 model.addAttribute("dataList", data);
             }
 
