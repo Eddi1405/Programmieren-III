@@ -1,6 +1,7 @@
 package de.trio.imageshare.web.entities;
 
 import jakarta.persistence.*;
+
 /**
  * Diese Klasse gibt die Informationen einer Role vor.
  * Die Annotation @Entity gibt an, dass es sich um eine JPA-Entity-Klasse handelt.
@@ -14,9 +15,9 @@ public class RoleDaten {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name ="name")
+    @Column(name = "name")
     private String name;
-    @Column(name ="users")
+    @Column(name = "users")
     private String users;
 
     public long getId() {

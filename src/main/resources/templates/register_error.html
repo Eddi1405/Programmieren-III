@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Registration Error</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>ImageShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div class="container text-center">
-    <h3>Error! Username oder Email schon belegt!UND ODER LOGIN ERROR </h3>
-</div>
+<div th:insert="~{fragments/topnavbar :: navbar}"></div>
+<div class="middle">
+    <div>
+        <br>
+        <br>
+        <h3>Registrieren</h3>
+    </div>
+    <form id="form" method="post" style="max-width: 600px; margin: 0 auto;" th:action="@{/process_register}">
 
+        <input name="email" placeholder="E-Mail" required type="email"/>
+        <br>
+        <input maxlength="15" minlength="6" name="password" placeholder="Passwort" required type="password"/>
+        <br>
+        <input maxlength="20" minlength="2" name="user" placeholder="Username" required type="text"/>
+        <br>
+        <input type="submit" value="Registrieren"/>
+        <br>
+        <h3>Sie haben bereits einen Account?</h3>
+        <a href="/login">Hier Einloggen</a>
+    </form>
+    <p class="middle">Benutzername oder Email schon belegt!</p>
+</div>
 </body>
 </html>

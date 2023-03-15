@@ -1,15 +1,17 @@
 package de.trio.imageshare.web.Controller;
 
-import de.trio.imageshare.web.entities.PictureDaten;
 import de.trio.imageshare.web.Repository.PictureRepository;
 import de.trio.imageshare.web.Service.IndexService;
-
+import de.trio.imageshare.web.entities.PictureDaten;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.ui.Model;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -29,6 +31,7 @@ public class IndexController {
 
     /**
      * In dem Constructor wird pictureRepository und indexService initialisiert.
+     *
      * @param pictureRepository
      * @param indexService
      */
@@ -40,23 +43,26 @@ public class IndexController {
 
     /**
      * Ist dafür da um /index aufzurufen.
+     *
      * @return
      */
 
     @GetMapping(value = "/")
-    public String getPage(Model model,HttpSession session) {
-        loginController.navbar(model,session);
+    public String getPage(Model model, HttpSession session) {
+        loginController.navbar(model, session);
         return "index";
     }
+
     @GetMapping(value = "/index")
-    public String getIndexPage(Model model,HttpSession session) {
-        loginController.navbar(model,session);
+    public String getIndexPage(Model model, HttpSession session) {
+        loginController.navbar(model, session);
         return "index";
     }
 
     /**
      * Wenn nicht eine eigene Url ausgewählt wurde wird eine zufällige Url vergeben diese wird überprüft ob sie noch nicht vorhanden ist und danach werden die
      * eingebenen Daten gespeichert. Am Ende wird man auf die jeweilige Seite weitergeleitet.
+     *
      * @param bild
      * @param title
      * @param beschreibung
@@ -72,9 +78,9 @@ public class IndexController {
             do {
                 urlname = RandomValue(6);
             } while (pictureRepository.existsBybildname(urlname));
-            if(loginController.user == null){
+            if (loginController.user == null) {
                 indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, "null");
-            }else{
+            } else {
                 indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, loginController.user);
             }
             return "redirect:/" + urlname;
@@ -83,9 +89,9 @@ public class IndexController {
                 return "index";
             } else {
                 urlname = urltext;
-                if(loginController.user == null){
+                if (loginController.user == null) {
                     indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, "null");
-                }else{
+                } else {
                     indexService.saveData(urlname, bild, title, beschreibung, kategorie, zeit, loginController.user);
                 }
                 return "redirect:/" + urlname;
@@ -95,17 +101,18 @@ public class IndexController {
 
     /**
      * Übergibt die Daten wenn sie vorhanden sind an die HTML Seite.
+     *
      * @param model
      * @return
      */
     @GetMapping(value = "/{name}")
-    public String getIndexShowPage(Model model,@PathVariable("name") String name,HttpSession session) {
+    public String getIndexShowPage(Model model, @PathVariable("name") String name, HttpSession session) {
         PictureDaten data = indexService.getNamebybildname(name, pictureRepository);
         model.addAttribute("dataList", data);
-        loginController.navbar(model,session);
-        if(data == null){
+        loginController.navbar(model, session);
+        if (data == null) {
             return "NoData";
-        }else{
+        } else {
             return "indexShow";
         }
 
@@ -113,6 +120,7 @@ public class IndexController {
 
     /**
      * Gibt dem Bild ein Pfad über den man das Bild aufrufen kann.
+     *
      * @param name
      * @return
      */
@@ -129,6 +137,7 @@ public class IndexController {
 
     /**
      * Erstellt einen belibig lange Zeichenfolge
+     *
      * @param length
      * @return
      */

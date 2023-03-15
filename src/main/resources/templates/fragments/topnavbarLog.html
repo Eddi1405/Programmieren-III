@@ -1,15 +1,17 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">>
+<html lang="de" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">>
 <head>
     <title>ImageShare</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../static/css/style.css" type="text/css">
+    <link href="../../static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div th:fragment="navbar" class="topnav">
+
+<div class="topnav" th:fragment="navbar">
     <a class="active" href="index">Startseite</a>
-    <a href="logout" class="right">Ausloggen</a>
-    <a href="dashboard" class="right">Dashboard</a>
+    <a class="right" href="logout">Ausloggen</a>
+    <a class="right" href="dashboard">Dashboard</a>
 </div>
+
 </body>
 </html>

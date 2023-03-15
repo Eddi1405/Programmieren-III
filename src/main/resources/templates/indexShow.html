@@ -1,17 +1,17 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 
 <head>
     <title>ImageShare</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 
 <body>
-<div th:insert="${log} :: navbar "></div>
+<div th:insert="~{${log}:: navbar}"></div>
 
-<div th:each="data : ${dataList}" class="middle">
-    <img style="margin-bottom: 5px" id="" th:src="@{${data.bildpfad}}" alt="Fehler">
+<div class="middle" th:each="data : ${dataList}">
+    <img alt="Fehler" id="" style="margin-bottom: 5px" th:src="@{${data.bildpfad}}">
     <div class="box">
         <h3 th:text="${data.title}"></h3>
         <p th:text="${data.beschreibung}"></p>

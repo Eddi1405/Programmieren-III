@@ -1,6 +1,5 @@
 package de.trio.imageshare.web.entities;
 
-import de.trio.imageshare.web.entities.RoleDaten;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,6 +7,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * Diese Klasse gibt die Informationen eines Users vor.
  * Die Annotation @Entity gibt an, dass es sich um eine JPA-Entity-Klasse handelt.
@@ -79,6 +79,7 @@ public class UserDaten {
     public void setRole(String role) {
         this.role = role;
     }
+
     public String getPassword() {
         return password;
     }

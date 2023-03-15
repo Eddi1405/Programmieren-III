@@ -1,13 +1,14 @@
 package de.trio.imageshare.web.Controller;
 
-import de.trio.imageshare.web.entities.UserDaten;
 import de.trio.imageshare.web.Repository.UserRepository;
+import de.trio.imageshare.web.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Dieser Controller ist für die Registrierung der User zuständig.
@@ -17,45 +18,45 @@ public class RegisterController {
 
     @Autowired
     private UserRepository userRepo;
+    private UserService userService;
 
-    /**
-     * Gibt die Indexseite zurück.
-     * @return
-     */
-    @GetMapping("")
-    public String viewHomePage() {
-        return "index";
+    public RegisterController(UserService userService) {
+        this.userService = userService;
     }
+
 
     /**
      * Speichert die im Formular eingegebenen Daten und speichert diese als neue UserDaten in der Datenbank ab.
+     *
      * @param model
      * @return
      */
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new UserDaten());
-
         return "signup_form";
+    }
+
+    @GetMapping("/register_error")
+    public String showRegistration_error(Model model) {
+        return "register_error";
     }
 
     /**
      * Der gespeicherte User wird übergeben und das Eingegebene Password wird verschlüsselt in der DB gespeichert.
      * Ebenfalls wird überprüft, ob es der jeweilige User oder die E-Mail schon existiert.
      * Um jeden Usernamen und jede E-Mail einzigartig zu halten.
-     * @param user
+     *
      * @return
      */
     @PostMapping("/process_register")
-    public String processRegister(UserDaten user) {
+    public String processRegister(@RequestParam("user") String name, @RequestParam("email") String email, @RequestParam("password") String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        if(!userRepo.existsByUsername(user.getUsername())&& !userRepo.existsByEmail(user.getEmail())){
-            userRepo.save(user);
+        String encodedPassword = passwordEncoder.encode(password);
+        if (!userRepo.existsByUsername(name) && !userRepo.existsByEmail(email)) {
+            userService.saveData(encodedPassword, name, email);
             return "redirect:/login";
 
-        }else{
+        } else {
             return "register_error";
         }
 

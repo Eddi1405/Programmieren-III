@@ -1,37 +1,37 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 
 <head>
     <title>ImageShare</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 
 <body>
 <div th:insert="~{/fragments/topnavbarLog:: navbar}"></div>
 <div>
 
-        <form class="middle" action="/dashboard" method="post">
-            <input type="text" placeholder="Title" id="title" name="title">
+    <form action="/dashboard" class="middle" method="post">
+        <input id="title" name="title" placeholder="Title" type="text">
 
-            <input type="date" id="datum1" name="datum1">
+        <input id="datum1" name="datum1" type="date">
 
-            <input type="date" id="datum2" name="datum2">
+        <input id="datum2" name="datum2" type="date">
 
-            <select style="width: 210px;" id="kategorie" name="kategorie">
-                <option selected="selected" value="">Wähle eine Kategorie aus.</option>
-                <option value="Tier">Tier</option>
-                <option value="Kunst">Kunst</option>
-                <option value="Abstrakt">Abstrakt</option>
-                <option value="Auto">Auto</option>
-                <option value="Keine">Keine</option>
-            </select>
+        <select id="kategorie" name="kategorie" style="width: 210px;">
+            <option value="">Kategorie</option>
+            <option value="Tier">Tier</option>
+            <option value="Kunst">Kunst</option>
+            <option value="Abstrakt">Abstrakt</option>
+            <option value="Auto">Auto</option>
+            <option value="Keine">Keine</option>
+        </select>
 
-            <input type="submit" value="Suchen">
-        </form>
+        <input type="submit" value="Suchen">
+    </form>
 
-    <div th:each="data : ${dataList}" class="middle">
-        <a th:href="${data.bildname}"><img style="margin-bottom: 5px" id="" th:src="@{${data.bildpfad}}" alt="Fehler"></a>
+    <div class="middle" th:each="data : ${dataList}">
+        <a th:href="${data.bildname}"><img alt="Fehler" id="" style="margin-bottom: 5px" th:src="@{${data.bildpfad}}"></a>
         <div class="box">
             <h3 th:text="${data.title}"></h3>
             <p th:text="${data.beschreibung}"></p>
@@ -40,6 +40,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

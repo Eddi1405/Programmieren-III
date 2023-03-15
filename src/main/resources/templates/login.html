@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
-    <title>Login</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <title>ImageShare</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 
 <div th:insert="~{${log}:: navbar}"></div>
 
-<form class="middle" method="post" id="form" action="/login">
+<form action="/login" class="middle" id="form" method="post">
     <br>
     <br>
     <h3>Login</h3>
-    <div>
 
-        <input type="text" id="username" class="form-control" name="username" placeholder="Benutzername" required>
-    </div>
-    <div>
-        <input type="password" id="password" class="form-control" name="password" placeholder="Passwort" required>
-    </div>
+    <input id="username" name="username" placeholder="Benutzername" required type="text">
+    <br>
+    <input id="password" name="password" placeholder="Passwort" required type="password">
+    <br>
+    <input type="submit" value="Anmelden">
 
-
-    <input type="submit" value="Anmelden" >
-
-    <script>
-        const box = document.getElementById("form");
-        box.addEventListener('submit', function () {
-            alert("Login erfolgreich");
-        });
-
-    </script>
 </form>
 </body>
 </html>

@@ -22,7 +22,9 @@ public class UserRepositoryTests {
 
     @Autowired
     private UserRepository repo;
-
+    public UserRepositoryTests(UserRepository repo){
+        this.repo =repo;
+    }
     @Test
     public void testCreateUser() {
         UserDaten user = new UserDaten();

@@ -1,28 +1,28 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org " lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 
 <head>
     <title>ImageShare</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 
 <body>
-<div th:insert="${log} :: navbar "></div>
+<div th:insert="~{${log}:: navbar}"></div>
 
-<form class="middle" action="/index" method="post" enctype="multipart/form-data">
+<form action="/index" class="middle" enctype="multipart/form-data" method="post">
     <br>
     <br>
     <h3>Wählen eine Bild aus.</h3>
-    <input type="file" value="bildpfad" name="bildpfad" id="bildpfad">
+    <input id="bildpfad" name="bildpfad" required type="file" value="bildpfad">
     <br>
     <br>
-    <input type="text" placeholder="Title" id="title" name="title">
+    <input id="title" name="title" placeholder="Title" type="text">
     <br>
-    <textarea placeholder="Beschreibung" id="beschreibung" name="beschreibung" maxlength="250"></textarea>
+    <textarea id="beschreibung" maxlength="250" name="beschreibung" placeholder="Beschreibung"></textarea>
     <br>
-    <select style="width: 210px;" id="kategorie" name="kategorie">
-        <option disabled selected="selected" value="null">Wähle eine Kategorie aus.</option>
+    <select id="kategorie" name="kategorie" required style="width: 210px;">
+        <option value="">Kategorie</option>
         <option value="Tier">Tier</option>
         <option value="Kunst">Kunst</option>
         <option value="Abstrakt">Abstrakt</option>
@@ -30,19 +30,17 @@
         <option value="Keine">Keine</option>
     </select>
     <br>
-    <select style="width: 210px" id="zeit" name="zeit">
-        <option disabled selected="selected" value="0">Wähle eine Zeit aus.</option>
+    <select id="zeit" name="zeit" required style="width: 210px">
+        <option value="">Automatisches Löschen</option>
         <option value="1">1min</option>
         <option value="5">5min</option>
         <option value="10">10min</option>
         <option value="99">Nie</option>
     </select>
     <br>
-    <p style="width: 206px; padding: 4px 0; font-size: 15px;margin-top:4px;" class="box2"><input type="checkbox"
-                                                                                                 id="url">Eigene URL
-    </p>
+    <p class="box2" style="width: 206px; padding: 4px 0; font-size: 15px;margin-top:4px;"><input id="url" type="checkbox">Eigene URL</p>
     <div id="urldiv" style="display: none;">
-        <input type="text" id="urltext" name="urltext">
+        <input id="urltext" name="urltext" type="text">
     </div>
     <script>
         const box = document.getElementById("url");
